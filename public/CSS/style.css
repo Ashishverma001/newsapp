@@ -1,0 +1,61 @@
+.background{
+    background: linear-gradient(to right,grey,black);
+}  
+
+.card-title {
+    font-size: 0.9rem;
+    height: 80px;
+    border-bottom: 2px solid lightgray;
+    overflow: auto;
+}
+.card-title::-webkit-scrollbar{
+    display: none;
+}
+
+.data-source {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid lightgray;
+
+}
+.data-source p{
+    font-size: 0.55rem;
+}
+
+.card-text {
+    font-size: 0.8rem;
+    height: 170px;
+}
+
+@media only screen and (min-width:0) and (max-width:575px) {
+    .card-title {
+        height: 50px;
+    }
+    .card-text {
+        height: 90px;
+    }
+}
+@media only screen and (min-width:576px) and (max-width:767px) {
+    .card-title {
+        height: 50px;
+    }
+    .card-text {
+        height: 100px;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1199px) {
+    .card-title {
+        height: 70px;
+    }
+    .card-text {
+        height: 100px;
+    }
+}
+@media only screen and (min-width:992px) and (max-width:1199px) {
+    .card-title {
+        height: 70px;
+    }
+    .card-text {
+        height: 120px;
+    }
+}
