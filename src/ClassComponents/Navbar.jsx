@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
-export default function Navbar() {
-  let [search, setSearch] =useState
-  let navigate = useNavigate()
-
-  function postSearch(e) {
-    e.privateDefault()
-    navigate(`/${search}`)
-    setSearch("") 
+export default class Navbar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      search: ""
+    }
   }
-  return (
+  postSearch(e) {
+    e.preventDefault()
+    this.props.changeSearch(this.state.search)
+    this.setState({ search: '' })
+  }
+  render() {
+    return (
       <>
         <nav className="navbar navbar-expand-lg background sticky-top">
           <div className="container-fluid">
@@ -33,7 +37,7 @@ export default function Navbar() {
                 <li className='nav-item dropdown'>
                   <a className="nav-link text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     other
-                  </a> 
+                  </a>
                   <ul className='dropdown-menu'>
                     <li><Link className="dropdown-item" to="/Cricket">Cricket</Link></li>
                     <li><Link className="dropdown-item" to="/Entertainment">Entertainment</Link></li>
@@ -54,8 +58,8 @@ export default function Navbar() {
                   </ul>
                 </li>
               </ul>
-              <form className="d-flex" role="search" onSubmit={postSearch}>
-                <input className="form-control me-2" type="search" name='search' value={search} onChange={(e)=>setSearch(e.target.value)} placeholder="Search" aria-label="Search" />
+              <form className="d-flex" role="search" onSubmit={(e) => this.postSearch(e)}>
+                <input className="form-control me-2" type="search" name='search' onChange={(e) => this.setState({ search: e.target.value })} placeholder="Search" aria-label="Search" />
                 <button className="btn btn-outline-light" type="submit">Search</button>
               </form>
             </div>
@@ -63,5 +67,6 @@ export default function Navbar() {
         </nav>
       </>
     )
+  }
 }
 

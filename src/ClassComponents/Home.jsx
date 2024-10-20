@@ -11,23 +11,20 @@ export default class Home extends Component {
   }
 
   async getAPIData() {
-    let response = await fetch(`https://newsapi.org/v2/everything?q=${this.props.q}&sortBy=publishedAt&language=${this.props.language}&apiKey=ca07a6c639094b1f887d6cd15ee85d15`)
+    let response = await fetch(`https://newsapi.org/v2/everything?q=${this.props.search?this.props.search:this.props.q}&sortBy=publishedAt&language=${this.props.language}&apiKey=ca07a6c639094b1f887d6cd15ee85d15`)
     response = await response.json()
     if (response.status === "ok") {
       this.setState({
-        articles: response.articles,
+        articles: response.articles.filter(x=>x.title!=="[Removed]"),
         totalResults: response.totalResults
       })
     }
   }
   componentDidMount() {
-    const query = new URLSearchParams(window.location.href)
-    console.log(query.get("search"))
-    
     this.getAPIData()
 }
   componentDidUpdate(oldprops) {
-    
+    console.log(window.location.href)
     if (this.props !== oldprops) {
       this.getAPIData()
     }
