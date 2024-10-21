@@ -10,7 +10,7 @@ export default class Navbar extends Component {
   }
   postSearch(e) {
     e.preventDefault()
-    this.props.changeSearch(this.state.search)
+    this.props.changeLanguage(this.state.search)
     this.setState({ search: '' })
   }
   render() {
@@ -18,7 +18,7 @@ export default class Navbar extends Component {
       <>
         <nav className="navbar navbar-expand-lg background sticky-top">
           <div className="container-fluid">
-            <Link className="navbar-brand text-light" to="">NewsAPP</Link>
+            <Link className="navbar-brand text-light" to="" onClick={()=> this.props.changeSearch("")}>NewsAPP</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -27,24 +27,24 @@ export default class Navbar extends Component {
                 <li className="nav-item">
                   <Link className="nav-link text-light active" aria-current="page" href="/All">All</Link>
                 </li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Ploitics">Politics</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Crime">Crime</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Education">Education</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Science">Science</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Technology">Technology</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Games">Games</Link></li>
-                <li className="nav-item"><Link className="nav-link text-light" to="/Olympics">Olympics</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Ploitics" onClick={()=> this.props.changeSearch("")}>Politics</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Crime" onClick={()=> this.props.changeSearch("")}>Crime</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Education" onClick={()=> this.props.changeSearch("")}>Education</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Science" onClick={()=> this.props.changeSearch("")}>Science</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Technology" onClick={()=> this.props.changeSearch("")}>Technology</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Games" onClick={()=> this.props.changeSearch("")}>Games</Link></li>
+                <li className="nav-item"><Link className="nav-link text-light" to="/Olympics" onClick={()=> this.props.changeSearch("")}>Olympics</Link></li>
                 <li className='nav-item dropdown'>
                   <a className="nav-link text-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     other
                   </a>
                   <ul className='dropdown-menu'>
-                    <li><Link className="dropdown-item" to="/Cricket">Cricket</Link></li>
-                    <li><Link className="dropdown-item" to="/Entertainment">Entertainment</Link></li>
-                    <li><Link className="dropdown-item" to="/Finance">Finance</Link></li>
-                    <li><Link className="dropdown-item" to="/India">India</Link></li>
-                    <li><Link className="dropdown-item" to="/world">world</Link></li>
-                    <li><Link className="dropdown-item" to="/Jokes">Jokes</Link></li>
+                    <li><Link className="dropdown-item" to="/Cricket" onClick={()=> this.props.changeSearch("")}>Cricket</Link></li>
+                    <li><Link className="dropdown-item" to="/Entertainment" onClick={()=> this.props.changeSearch("")}>Entertainment</Link></li>
+                    <li><Link className="dropdown-item" to="/Finance" onClick={()=> this.props.changeSearch("")}>Finance</Link></li>
+                    <li><Link className="dropdown-item" to="/India" onClick={()=> this.props.changeSearch("")}>India</Link></li>
+                    <li><Link className="dropdown-item" to="/world" onClick={()=> this.props.changeSearch("")}>world</Link></li>
+                    <li><Link className="dropdown-item" to="/Jokes" onClick={()=> this.props.changeSearch("")}>Jokes</Link></li>
 
                   </ul>
                 </li>
@@ -59,7 +59,7 @@ export default class Navbar extends Component {
                 </li>
               </ul>
               <form className="d-flex" role="search" onSubmit={(e) => this.postSearch(e)}>
-                <input className="form-control me-2" type="search" name='search' onChange={(e) => this.setState({ search: e.target.value })} placeholder="Search" aria-label="Search" />
+                <input className="form-control me-2" type="search" name='search' value={this.state.search} onChange={(e) => this.setState({ search: e.target.value })} placeholder="Search" aria-label="Search" />
                 <button className="btn btn-outline-light" type="submit">Search</button>
               </form>
             </div>
